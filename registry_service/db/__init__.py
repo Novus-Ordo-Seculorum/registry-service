@@ -1,1 +1,1 @@
-from .session import Postgres
+from .storage import ServiceStorage

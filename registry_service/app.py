@@ -1,13 +1,10 @@
 import axial.service
 
+from axial.service.middleware import EncoderDecoder
 from axial.service.middleware.processors import (
     ProtobufProcessor, JsonProcessor,
     )
-from axial.service.middleware import (
-    EncoderDecoder, SqlalchemyConnector
-    )
 
-from .db.session import Postgres
 from . import routes
 
 
@@ -20,11 +17,12 @@ class Application(axial.service.Application):
                 ProtobufProcessor(self.name),
                 JsonProcessor(),
                 ]),
-            SqlalchemyConnector(Postgres),
             ]
 
     @property
     def routes(self):
         return [
-            routes.StatusCheck(),
+            routes.ServicesRoute(),
+            routes.ServiceNamesRoute(),
+            routes.ServiceRoute(),
         ]
