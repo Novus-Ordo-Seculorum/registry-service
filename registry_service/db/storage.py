@@ -28,7 +28,7 @@ class ServiceStorage(object):
         return cls._instance
 
     def __init__(self):
-        # TODO: Load redis connection info from config settings.
+        # This assumes Redis is running on localhost on the default port.
         self.redis = StrictRedis()
 
     def delete_service(self, service_name:str):

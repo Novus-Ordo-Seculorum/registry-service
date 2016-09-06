@@ -7,4 +7,5 @@ from registry_service import Application
 
 
 app = Application('registry')
+app.register('0.0.0.0', 8000)
 """The uWSGI mountpoint."""
